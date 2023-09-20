@@ -1,35 +1,23 @@
-#include <monty.h>
+#include "monty.h"
 
 /**
  * func - start of code
  * @lineptr: line that has opcode and argument
  * @stak: pointer of stack
  * @num: number of lines
- * @f: pointer to file 
+ * @f: pointer to file
  *
- * Return: nothhing
+ * Return: 0 or 1
  */
-void func(char *lineptr, stack_t **stak, unsigned int num, FILE *f)
+int func(char *lineptr, stack_t **stak, unsigned int num, FILE *f)
 {
 	instruction_t inst[] = {
-			{"pall", _pall},
-			{"push", _push},
-			{"pop", _pop},
-			{"pint", _pint},
-			{"add", _add},
-			{"swap", _swap},
-			{"sub", _sub},
-			{"nop", _nop},
-			{"mul", _mul},
-			{"div", _div},
-			{"mod", _mod},
-			{"pchar", _pchar},
-			{"pstr", _pstr},
-			{"rotr", _rotr},
-			{"rotl", _rotl},
-			{"stack", _stack},
-			{"queue", _queue},
-			{NULL, NULL}
+			{"pall", _pall}, {"push", _push}, {"pop", _pop},
+			{"pint", _pint}, {"add", _add}, {"swap", _swap},
+			{"sub", _sub}, {"nop", _nop}, {"mul", _mul},
+			{"div", _div}, {"mod", _mod}, {"pchar", _pchar},
+			{"pstr", _pstr}, {"rotr", _rotr}, {"rotl", _rotl},
+			{"stack", _stack}, {"queue", _queue}, {NULL, NULL}
 			};
 	unsigned int i = 0;
 	char *op;
@@ -41,14 +29,14 @@ void func(char *lineptr, stack_t **stak, unsigned int num, FILE *f)
 	while (inst[i].opcode && op)
 	{
 		if (strcmp(op, inst[i].opcode) == 0)
-		{	inst[i].f(stak, counter);
+		{	inst[i].f(stak, num);
 			return (0);
 		}
 		i++;
 	}
 	if (op && inst[i].opcode == NULL)
 	{
-		fprintf(stderr, "L%d: unknown instruction %s\n", counter, op);
+		fprintf(stderr, "L%d: unknown instruction %s\n", num, op);
 		free_stak(*stak);
 		free(lineptr);
 		fclose(f);

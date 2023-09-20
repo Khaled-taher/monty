@@ -6,7 +6,7 @@
   *@num: number of line
   *Return: nothing
  */
-void f_rotl(stack_t **stak, unsigned int num)
+void _rotl(stack_t **stak, unsigned int num)
 {
 	stack_t *h, *a;
 
@@ -21,7 +21,7 @@ void f_rotl(stack_t **stak, unsigned int num)
 	while (h->next != NULL)
 	{
 		h = h->next;
-	}`
+	}
 	(*stak)->next = NULL;
 	h->next = *stak;
 	(*stak)->prev = h;
@@ -30,7 +30,7 @@ void f_rotl(stack_t **stak, unsigned int num)
 
 /**
   *_rotr - rotates the stack to the bottom
-  *@stak: pointer to head of stack 
+  *@stak: pointer to head of stack
   *@num: number of line
   *Return: nothing
  */
@@ -38,8 +38,8 @@ void _rotr(stack_t **stak, unsigned int num)
 {
 	stack_t *h;
 
-	h = *head;
-	(void) num;;
+	h = *stak;
+	(void) num;
 	if (*stak == NULL || (*stak)->next == NULL)
 	{
 		return;

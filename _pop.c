@@ -1,6 +1,6 @@
 #include "monty.h"
 /**
- * f_pop - printing the top of stack
+ * _pop - printing the top of stack
  * @stak: pointer to head of stack
  * @num: number of line
  * Return: nothing
@@ -23,14 +23,14 @@ void _pop(stack_t **stak, unsigned int num)
 }
 
 /**
- * _pint - printing the top of stack without poping 
+ * _pint - printing the top of stack without poping
  * @stak: pointer to head of stack
  * @num: number of line
  * Return: nothing
 */
 void _pint(stack_t **stak, unsigned int num)
 {
-	if (*head == NULL)
+	if (*stak == NULL)
 	{
 		fprintf(stderr, "L%u: can't pint, stack empty\n", num);
 		fclose(info.f);
@@ -47,7 +47,7 @@ void _pint(stack_t **stak, unsigned int num)
  * @num: line_number
  * Return: nothing
 */
-void _swap(stack_t **stak, unsigned int numm)
+void _swap(stack_t **stak, unsigned int num)
 {
 	stack_t *p;
 	int a, len = 0;
@@ -104,7 +104,7 @@ void _pchar(stack_t **stak, unsigned int num)
 
 /**
  * _pstr - printing string starting at top of stack,
- * @stak: pointer to head of stack 
+ * @stak: pointer to head of stack
  * @num: number of line
  * Return: nothing
 */

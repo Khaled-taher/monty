@@ -11,7 +11,7 @@ void _add(stack_t **stak, unsigned int num)
 	stack_t *p;
 	int a, len = 0;
 
-	h = *stak;
+	p = *stak;
 	while (p)
 	{
 		p = p->next;
@@ -19,9 +19,9 @@ void _add(stack_t **stak, unsigned int num)
 	}
 	if (len < 2)
 	{
-		fprintf(stderr, "L%d: can't add, stack too short\n", counter);
+		fprintf(stderr, "L%d: can't add, stack too short\n", num);
 		fclose(info.f);
-		free(infoo.lineptr);
+		free(info.lineptr);
 		free_stak(*stak);
 		exit(EXIT_FAILURE);
 	}
@@ -82,7 +82,7 @@ void _mod(stack_t **stak, unsigned int num)
 {
 	stack_t *p;
 	int a, len = 0;
-	
+
 	p = *stak;
 	while (p)
 	{
@@ -122,8 +122,8 @@ void _sub(stack_t **stak, unsigned int num)
 {
 	stack_t *p;
 	int a, len = 0;
-	
-	h = *stak;
+
+	p = *stak;
 	while (p)
 	{
 		p = p->next;
@@ -131,9 +131,9 @@ void _sub(stack_t **stak, unsigned int num)
 	}
 	if (len < 2)
 	{
-		fprintf(stderr, "L%d: can't sub, stack too short\n", counter);
+		fprintf(stderr, "L%d: can't sub, stack too short\n", num);
 		fclose(info.f);
-		free(infoo.lineptr);
+		free(info.lineptr);
 		free_stak(*stak);
 		exit(EXIT_FAILURE);
 	}
@@ -152,27 +152,27 @@ void _sub(stack_t **stak, unsigned int num)
 */
 void _mul(stack_t **stak, unsigned int num)
 {
-        stack_t *p;
-        int a, len = 0;
+	stack_t *p;
+	int a, len = 0;
 
-        h = *stak;
-        while (p)
-        {
-                p = p->next;
-                len++;
-        }
-        if (len < 2)
-        {
-                fprintf(stderr, "L%d: can't sub, stack too short\n", counter);
-                fclose(info.f);
-                free(infoo.lineptr);
-                free_stak(*stak);
-                exit(EXIT_FAILURE);
-        }
-        p = *stak;
-        a = p->n * p->next->n;
-        p->next->n = a;
-        *stak = p->next;
-        free(p);
+	p = *stak;
+	while (p)
+	{
+		p = p->next;
+		len++;
+	}
+	if (len < 2)
+	{
+		fprintf(stderr, "L%d: can't sub, stack too short\n", num);
+		fclose(info.f);
+		free(info.lineptr);
+		free_stak(*stak);
+		exit(EXIT_FAILURE);
+	}
+	p = *stak;
+	a = p->n * p->next->n;
+	p->next->n = a;
+	*stak = p->next;
+	free(p);
 }
 

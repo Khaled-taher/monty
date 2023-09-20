@@ -11,10 +11,10 @@ void _push(stack_t **stak, unsigned int num)
 
 	if (!info.ar)
 	{
-		fprintf(stderr, "L%d: usage: push integer\n", counter);
+		fprintf(stderr, "L%d: usage: push integer\n", num);
 		fclose(info.f);
 		free(info.lineptr);
-		free_stack(*stak);
+		free_stak(*stak);
 		exit(EXIT_FAILURE);
 	}
 	else
@@ -31,7 +31,7 @@ void _push(stack_t **stak, unsigned int num)
 			fprintf(stderr, "L%d: usage: push integer\n", num);
 			fclose(info.f);
 			free(info.lineptr);
-			free_stack(*stak);
+			free_stak(*stak);
 			exit(EXIT_FAILURE);
 		}
 	}
@@ -63,7 +63,7 @@ void _addnod(stack_t **stak, int intgr)
 	if (h)
 		h->prev = new;
 	new->prev = NULL;
-	new->next = *head;
+	new->next = *stak;
 	new->n = intgr;
 	*stak = new;
 }

@@ -1,5 +1,7 @@
-#include <monty.h>
+#include "monty.h"
+
 info_t info = {NULL, NULL, NULL, 0};
+
 /**
  * main - start of code
  * @argc: number of argummnets
@@ -7,7 +9,7 @@ info_t info = {NULL, NULL, NULL, 0};
  *
  * Return: return 0 or error state
  */
-void main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
 	unsigned int num = 0;
 	size_t line_len = 1;
@@ -23,7 +25,7 @@ void main(int argc, char *argv[])
 	}
 
 	f = fopen(argv[1], "r");
-
+	info.f = f;
 	if (!f)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
@@ -40,7 +42,7 @@ void main(int argc, char *argv[])
 		{
 			func(lineptr, &stak, num, f);
 		}
-		free(data);
+		free(lineptr);
 	}
 	free_stak(stak);
 	fclose(f);

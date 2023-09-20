@@ -1,4 +1,4 @@
-#include "monty"
+#include "monty.h"
 
 /**
  * _queue - change to queue mod
@@ -19,7 +19,7 @@ void _queue(stack_t **stak, unsigned int num)
  * @num: number of line
  * Return: nothing
 */
-void _stack(stack_t **stak, unsigned num)
+void _stack(stack_t **stak, unsigned int num)
 {
 	info.flag = 0;
 	(void)stak;
@@ -32,7 +32,7 @@ void _stack(stack_t **stak, unsigned num)
   *@num: number of line
   *Return: nothing
  */
-void f_nop(stack_t **stak, unsigned int numm)
+void _nop(stack_t **stak, unsigned int num)
 {
 	(void) stak;
 	(void) num;
